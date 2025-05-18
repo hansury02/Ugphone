@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đang chuyển hướng...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f7f7f7;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    #getLink {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Vui lòng chờ <span id="countdown">10</span> giây để tiếp tục</h2>
+    <p>Hãy đảm bảo bạn đã Sub hoặc Like trước khi bấm "Lấy link"</p>
+    
+    <!-- Giả lập yêu cầu sub/like -->
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+
+    <button id="getLink" onclick="window.location.href='https://google.com';">Lấy link</button>
+  </div>
+
+  <script>
+    let seconds = 10;
+    const countdownEl = document.getElementById('countdown');
+    const button = document.getElementById('getLink');
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        button.style.display = 'inline-block';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
